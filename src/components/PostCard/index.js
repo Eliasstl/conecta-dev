@@ -7,7 +7,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-import { mergeClasses } from '@material-ui/styles';
+import IconButton from '@material-ui/core/IconButton'
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import MessageIcon from '@material-ui/icons/Message';
+
 
 
 const usesStyles = makeStyles((theme)=>({
@@ -34,6 +38,9 @@ const usesStyles = makeStyles((theme)=>({
     },
     content:{
         padding: 0
+    },
+    favorite:{
+        marginLeft:'auto'
     }
 
 
@@ -75,8 +82,31 @@ function PostCard ({ post }){
                 </CardActionArea>
 
             </CardContent>
-            <CardActions>
+            <CardActions disableSpacing>
+                <IconButton aria-label="like">
+                    <FavoriteIcon/>
+                    <Typography
+                       style={{cursor:'pointer'}}
+                       color="textSecondary"
+                       variant="body2"
+                    >
+                        {'10'}
 
+                    </Typography> 
+                </IconButton>
+                <IconButton aria-label="comment">
+                    <MessageIcon/>
+                    <Typography
+                    className={classes.reactions}
+                    color="textSecondary"
+                    variant="body2"
+                    >
+                    {'30'}
+                    </Typography>
+                </IconButton>
+                <IconButton aria-label="favorite" className={classes.favorite}>
+                    <BookmarkIcon/>
+                </IconButton>       
             </CardActions>
 
         </Card>
